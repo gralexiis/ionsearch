@@ -1,0 +1,47 @@
+<ion-header no-border>
+  
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Negocios
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="tertiary">
+    <ion-searchbar placeholder="Buscar usuario..."
+                   animated
+                   (ionChange)="buscarUsuario( $event )">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  
+  <ion-list *ngIf="usuarios.length === 0">
+    <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1]">
+      <ion-label>
+        <ion-skeleton-text width="40%"></ion-skeleton-text>
+        <ion-skeleton-text width="80%"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list *ngIf="usuarios.length > 0">
+
+    <ion-item routerLink="/servicio" *ngFor="let usuario of usuarios | filtro:textoBuscar">
+  
+
+  
+      <ion-avatar slot="start">
+        <img src="{{ usuario.thumbnailUrl }}">
+      </ion-avatar>
+<ion-label>
+         <h4> {{ usuario.title }}</h4>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>
